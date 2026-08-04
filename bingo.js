@@ -1,95 +1,234 @@
-const squares = [
-"Square 1","Square 2","Square 3","Square 4","Square 5",
-"Square 6","Square 7","Square 8","Square 9","Square 10",
-"Square 11","Square 12","FREE","Square 14","Square 15",
-"Square 16","Square 17","Square 18","Square 19","Square 20",
-"Square 21","Square 22","Square 23","Square 24","Square 25"
-];
+const COOKIE_NAME = "stemFestivalBingo";
 
-const COOKIE_NAME = "bingoState";
+let bingoData = [];
+let completed = {};
 
 const board = document.getElementById("bingo");
 
-let state = new Array(25).fill(false);
+/* ==========================================
+   COOKIE FUNCTIONS
+========================================== */
 
-// ------------------------
-// Cookie Functions
-// ------------------------
+function setCookie(name, value, days = 365) {
 
-function setCookie(name, value, days=365){
-    const date = new Date();
-    date.setTime(date.getTime() + days*24*60*60*1000);
+    const expires = new Date();
+
+    expires.setTime(
+        expires.getTime() + days * 24 * 60 * 60 * 1000
+    );
 
     document.cookie =
-        `${name}=${encodeURIComponent(value)};expires=${date.toUTCString()};path=/`;
+        `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/`;
+
 }
 
-function getCookie(name){
+function getCookie(name) {
+
     const cookies = document.cookie.split(";");
 
-    for(let cookie of cookies){
+    for (let cookie of cookies) {
 
         cookie = cookie.trim();
 
-        if(cookie.startsWith(name + "=")){
-            return decodeURIComponent(cookie.substring(name.length + 1));
+        if (cookie.startsWith(name + "=")) {
+
+            return decodeURIComponent(
+                cookie.substring(name.length + 1)
+            );
+
         }
+
     }
 
     return null;
+
 }
 
-// ------------------------
-// Save / Load
-// ------------------------
+/* ==========================================
+   LOAD / SAVE PROGRESS
+========================================== */
 
-function saveState(){
-    setCookie(COOKIE_NAME, JSON.stringify(state));
-}
-
-function loadState(){
+function loadProgress() {
 
     const saved = getCookie(COOKIE_NAME);
 
-    if(saved){
+    if (saved) {
 
-        try{
-            const parsed = JSON.parse(saved);
+        try {
 
-            if(parsed.length === 25){
-                state = parsed;
-            }
+            completed = JSON.parse(saved);
 
-        }catch(e){}
+        }
+
+        catch {
+
+            completed = {};
+
+        }
+
     }
+
 }
 
-// ------------------------
-// Build Board
-// ------------------------
+function saveProgress() {
 
-function buildBoard(){
+    setCookie(
+        COOKIE_NAME,
+        JSON.stringify(completed)
+    );
+
+}
+
+/* ==========================================
+   LOAD CSV
+========================================== */
+
+async function loadCSV() {
+
+    try {
+
+        console.log("Loading CSV...");
+
+        const response = await fetch("bingo.csv");
+
+        console.log("CSV status:", response.status);
+
+
+        const text = await response.text();
+
+        console.log("CSV contents:");
+        console.log(text);
+
+
+        const rows = text.trim().split(/\r?\n/);
+
+        console.log("Rows found:", rows.length);
+
+
+        rows.shift();
+
+
+        bingoData = rows.map(row => {
+
+            const cols = row.split(",");
+
+            return {
+
+                id: cols[0].trim(),
+
+                task: cols[1].trim(),
+
+                passcode: cols[2].trim(),
+
+                png: cols[3]?.trim() || ""
+
+            };
+
+        });
+
+
+        console.log("Parsed bingo data:");
+        console.log(bingoData);
+
+
+        buildBoard();
+
+    }
+
+    catch(error){
+
+        console.error("CSV loading failed:", error);
+
+    }
+
+}
+
+/* ==========================================
+   BUILD BOARD
+========================================== */
+
+function buildBoard() {
+
+    console.log("Building board...");
 
     board.innerHTML = "";
 
-    squares.forEach((text,index)=>{
+    bingoData.forEach(square => {
 
         const div = document.createElement("div");
 
         div.className = "square";
 
-        if(state[index])
+        /* ---------- ICON ---------- */
+
+        if (square.png) {
+
+            const img = document.createElement("img");
+
+            img.src = "assets/icons/" + square.png + ".png";;
+
+            img.className = "square-icon";
+
+            img.alt = square.task;
+
+            div.appendChild(img);
+
+        }
+
+        /* ---------- TEXT ---------- */
+
+        const text = document.createElement("div");
+
+        text.className = "square-text";
+
+        text.textContent = square.task;
+
+        div.appendChild(text);
+
+        if (completed[square.id]) {
+
             div.classList.add("marked");
 
-        div.innerText = text;
+        }
 
-        div.addEventListener("click",()=>{
+        div.addEventListener("click", () => {
 
-            state[index] = !state[index];
+            if (completed[square.id])
+                return;
 
-            div.classList.toggle("marked");
+            if (square.passcode.toUpperCase() === "FREE") {
 
-            saveState();
+                completed[square.id] = true;
+
+                saveProgress();
+
+                div.classList.add("marked");
+
+                return;
+
+            }
+
+            const code = prompt("Enter the 4-digit booth passcode:");
+
+            if (code === null)
+                return;
+
+            if (code.trim() === square.passcode) {
+
+                completed[square.id] = true;
+
+                saveProgress();
+
+                div.classList.add("marked");
+
+                alert("Correct!");
+
+            }
+            else {
+
+                alert("Incorrect passcode.");
+
+            }
 
         });
 
@@ -99,26 +238,27 @@ function buildBoard(){
 
 }
 
-// ------------------------
-// Reset
-// ------------------------
+/* ==========================================
+   RESET CARD
+========================================== */
 
-function resetCard(){
+function resetCard() {
 
-    if(confirm("Reset the bingo card?")){
+    if (!confirm("Reset your bingo card?"))
+        return;
 
-        state = new Array(25).fill(false);
+    completed = {};
 
-        saveState();
+    saveProgress();
 
-        buildBoard();
-
-    }
+    buildBoard();
 
 }
 
-// Load existing cookie
+/* ==========================================
+   STARTUP
+========================================== */
 
-loadState();
+loadProgress();
 
-buildBoard();
+loadCSV();

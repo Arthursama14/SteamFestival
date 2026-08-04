@@ -1,0 +1,675 @@
+/* ==========================================
+   GLOBAL SETTINGS
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+
+    margin:0;
+
+    padding:0;
+
+    width:100%;
+
+    min-height:100%;
+
+    overflow-x:hidden;
+
+    font-family:
+        "Poppins",
+        Arial,
+        sans-serif;
+
+}
+
+
+
+/* ==========================================
+   SKY BACKGROUND
+========================================== */
+
+.sky {
+
+    position:fixed;
+
+    inset:0;
+
+    width:100vw;
+
+    height:100vh;
+
+    overflow:hidden;
+
+    z-index:0;
+
+    background:
+
+    linear-gradient(
+
+        to bottom,
+
+        #8fd8ff 0%,
+
+        #70c8ff 25%,
+
+        #55b3f5 50%,
+
+        #438bd2 75%,
+
+        #214d8a 100%
+
+    );
+
+}
+
+
+
+/* ==========================================
+   SUN GLOW
+========================================== */
+
+.sun {
+
+    position:absolute;
+
+    top:-120px;
+
+    left:-120px;
+
+    width:420px;
+
+    height:420px;
+
+    border-radius:50%;
+
+
+    background:
+
+    radial-gradient(
+
+        circle,
+
+        rgba(255,255,255,.95),
+
+        rgba(255,245,190,.7) 25%,
+
+        rgba(255,255,255,.25) 55%,
+
+        transparent 75%
+
+    );
+
+
+    filter:blur(8px);
+
+}
+
+
+
+/* ==========================================
+   CLOUD LAYER
+========================================== */
+
+#cloudLayer {
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+}
+
+
+
+.cloud {
+
+    position:absolute;
+
+    background-repeat:no-repeat;
+
+    background-position:center;
+
+    background-size:contain;
+
+    pointer-events:none;
+
+    will-change:transform;
+
+}
+
+
+
+/* ==========================================
+   MAIN CONTENT
+========================================== */
+
+.content {
+
+    position:relative;
+
+    z-index:10;
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+    padding-top:35px;
+
+    color:white;
+
+    text-align:center;
+
+
+    text-shadow:
+
+        0 3px 8px rgba(0,0,0,.35);
+
+}
+
+
+
+/* ==========================================
+   STEAM LOGO
+========================================== */
+
+.festival-logo {
+
+
+    width:min(
+
+        80vw,
+
+        900px
+
+    );
+
+
+    height:auto;
+
+
+    max-height:30vh;
+
+
+    object-fit:contain;
+
+
+    display:block;
+
+
+    margin-bottom:25px;
+
+
+    filter:
+
+        drop-shadow(
+
+            0 8px 15px rgba(0,0,0,.25)
+
+        );
+
+
+    animation:
+
+        logoFloat 5s ease-in-out infinite;
+
+}
+
+
+
+@keyframes logoFloat {
+
+
+    0% {
+
+        transform:translateY(0);
+
+    }
+
+
+    50% {
+
+        transform:translateY(-8px);
+
+    }
+
+
+    100% {
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* ==========================================
+   TITLES
+========================================== */
+
+h1 {
+
+    margin:10px 20px;
+
+    font-size:
+
+        clamp(
+
+            2rem,
+
+            5vw,
+
+            4rem
+
+        );
+
+}
+
+
+
+p {
+
+    margin:0 20px;
+
+    font-size:
+
+        clamp(
+
+            1rem,
+
+            2vw,
+
+            1.4rem
+
+        );
+
+}
+
+
+
+/* ==========================================
+   PASSPORT BACKGROUND
+========================================== */
+
+.passport-container {
+
+
+    position:relative;
+
+
+    width:min(
+
+        1200px,
+
+        95vw
+
+    );
+
+
+    aspect-ratio:17 / 22;
+
+
+    margin-top:40px;
+
+
+    margin-left:-25%;
+
+
+    background-image:
+
+        url("assets/passport.png");
+
+
+    background-repeat:no-repeat;
+
+
+    background-position:center;
+
+
+    background-size:contain;
+
+
+    z-index:15;
+
+}
+
+
+
+/* ==========================================
+   BINGO GRID
+========================================== */
+
+#bingo {
+
+
+    position:absolute;
+
+
+    top:25%;
+
+
+    right:4%;
+
+
+    width:45%;
+
+
+    height:45%;
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+        repeat(5,minmax(0,1fr));
+
+
+    grid-template-rows:
+
+        repeat(5,minmax(0,1fr));
+
+
+    gap:4px;
+
+
+    z-index:20;
+
+}
+
+
+
+/* ==========================================
+   BINGO SQUARES
+========================================== */
+
+.square {
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    text-align:center;
+
+
+    overflow:hidden;
+
+
+    padding:5px;
+
+
+    cursor:pointer;
+
+
+    user-select:none;
+
+
+    background:
+
+        rgba(255,255,255,.75);
+
+
+    backdrop-filter:
+
+        blur(4px);
+
+
+    border:
+
+        2px solid rgba(255,255,255,.9);
+
+
+    border-radius:10px;
+
+
+    transition:.2s ease;
+
+}
+
+
+
+.square:hover {
+
+
+    transform:scale(1.05);
+
+
+    background:
+
+        rgba(255,255,255,.95);
+
+}
+
+
+
+/* ==========================================
+   BINGO IMAGE
+========================================== */
+
+.square-icon {
+
+
+    width:70%;
+
+
+    height:70%;
+
+
+    object-fit:contain;
+
+
+    flex-shrink:1;
+
+
+    pointer-events:none;
+
+}
+
+
+
+/* ==========================================
+   BINGO TEXT
+========================================== */
+
+.square-text {
+
+
+    width:95%;
+
+
+    font-size:
+
+        clamp(
+
+            8px,
+
+            .75vw,
+
+            14px
+
+        );
+
+
+    line-height:1.1;
+
+
+    overflow:hidden;
+
+
+    display:-webkit-box;
+
+
+    -webkit-line-clamp:3;
+
+
+    -webkit-box-orient:vertical;
+
+}
+
+
+
+/* ==========================================
+   COMPLETED SQUARE
+========================================== */
+
+.marked {
+
+
+    background:
+
+        rgba(60,179,113,.85);
+
+
+    color:white;
+
+}
+
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+button {
+
+
+    margin-top:30px;
+
+
+    padding:
+
+        12px 30px;
+
+
+    border:none;
+
+
+    border-radius:25px;
+
+
+    font-size:16px;
+
+
+    cursor:pointer;
+
+}
+
+
+
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
+
+@media(max-width:700px) {
+
+
+    .content {
+
+        padding-top:20px;
+
+    }
+
+
+
+    .festival-logo {
+
+
+        width:85vw;
+
+
+        max-height:22vh;
+
+    }
+
+
+
+    .passport-container {
+
+
+        width:95vw;
+
+
+        margin-left:0;
+
+
+    }
+
+
+
+    #bingo {
+
+
+        top:25%;
+
+
+        right:4%;
+
+
+        width:45%;
+
+
+        height:45%;
+
+    }
+
+
+
+    .square {
+
+        padding:3px;
+
+    }
+
+
+    .square-icon {
+
+
+        width:80%;
+
+
+        height:80%;
+
+    }
+
+
+    .square-text {
+
+
+        font-size:
+
+            clamp(
+
+                7px,
+
+                2vw,
+
+                11px
+
+            );
+
+    }
+
+}
