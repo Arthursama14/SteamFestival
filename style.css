@@ -583,92 +583,75 @@ button {
    MOBILE RESPONSIVE
 ========================================== */
 
-@media(max-width:700px) {
-
+@media (max-width: 700px) {
 
     .content {
 
-        padding-top:20px;
+        padding-top: 20px;
 
     }
-
-
 
     .festival-logo {
 
+        width: 90vw;
 
-        width:85vw;
-
-
-        max-height:22vh;
+        max-height: 22vh;
 
     }
 
-
+    /* Passport artwork */
 
     .passport-container {
 
+        width: 180vw;          /* Make passport much larger */
 
-        width:95vw;
+        max-width: none;       /* Ignore desktop max width */
 
+        margin-left: -70vw;    /* Push most of it off-screen */
 
-        margin-left:0;
-
+        margin-top: 25px;
 
     }
 
-
+    /* Bingo overlay */
 
     #bingo {
 
+        top: 24%;
 
-        top:25%;
+        right: 5%;
 
+        width: 43%;
 
-        right:4%;
+        height: 44%;
 
-
-        width:45%;
-
-
-        height:45%;
+        gap: 2px;
 
     }
-
-
 
     .square {
 
-        padding:3px;
+        padding: 2px;
 
     }
-
 
     .square-icon {
 
+        width: 75%;
 
-        width:80%;
-
-
-        height:80%;
+        height: 75%;
 
     }
 
-
     .square-text {
 
+        font-size: clamp(
+            6px,
+            1.8vw,
+            10px
+        );
 
-        font-size:
-
-            clamp(
-
-                7px,
-
-                2vw,
-
-                11px
-
-            );
+        line-height: 1.05;
 
     }
 
