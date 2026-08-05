@@ -902,3 +902,59 @@ button {
     }
 
 }
+
+/* ==========================================
+   RESET BUTTON
+========================================== */
+
+.reset-button{
+
+    display:block;
+
+    margin:40px auto 60px auto;
+
+    padding:14px 32px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    color:white;
+
+    background:#1d5fa7;
+
+    border:none;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    box-shadow:
+
+        0 8px 20px rgba(0,0,0,.25);
+
+    transition:
+
+        transform .2s ease,
+
+        background .2s ease;
+
+    z-index:100;
+
+    position:relative;
+
+}
+
+.reset-button:hover{
+
+    transform:translateY(-2px);
+
+    background:#2d73c0;
+
+}
+
+.reset-button:active{
+
+    transform:translateY(1px);
+
+}
