@@ -578,7 +578,6 @@ button {
 }
 
 
-
 /* ==========================================
    MOBILE RESPONSIVE
 ========================================== */
@@ -607,7 +606,7 @@ button {
 
         max-width: none;       /* Ignore desktop max width */
 
-        margin-left: -170vw;    /* Push most of it off-screen */
+        margin-left: -70vw;    /* Push most of it off-screen */
 
         margin-top: 25px;
 
