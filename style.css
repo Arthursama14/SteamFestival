@@ -960,6 +960,7 @@ button {
 }
 
 #schedule{
+	z-index: 9999;
     max-width:900px;
     margin:60px auto;
     padding:20px;
