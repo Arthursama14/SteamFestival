@@ -607,7 +607,7 @@ button {
 
         max-width: none;       /* Ignore desktop max width */
 
-        margin-left: -70vw;    /* Push most of it off-screen */
+        margin-left: -170vw;    /* Push most of it off-screen */
 
         margin-top: 25px;
 
@@ -619,7 +619,7 @@ button {
 
         top: 24%;
 
-        right: 27%;
+        right: 5%;
 
         width: 43%;
 
