@@ -960,41 +960,95 @@ button {
 }
 
 #schedule {
-    display:block !important;
-    position:relative;
-    z-index:99999;
-    color:black;
-    padding:30px;
-    min-height:200px;
+    display: block !important;
+    position: relative;
+    z-index: 99999;
+
+    background: transparent;
+    color: white;
+
+    padding: 30px;
+    min-height: 200px;
+
+    max-width: 900px;
+    margin: 40px auto;
 }
 
-.schedule-event{
-    background:#fff;
-    border-left:6px solid #ccc;
-    border-radius:12px;
-    padding:16px;
-    margin-bottom:18px;
-    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+/* Individual schedule cards */
+.schedule-event {
+
+    background: rgba(255, 255, 255, 0.85);
+
+    color: #222;
+
+    border-left: 6px solid rgba(255,255,255,0.5);
+
+    border-radius: 12px;
+
+    padding: 16px;
+
+    margin-bottom: 18px;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,.15);
+
+    backdrop-filter: blur(6px);
+
 }
 
-.schedule-event.current{
-    border-left-color:#2ecc71;
-    background:#eefdf2;
+
+/* Current event */
+.schedule-event.current {
+
+    border-left-color: #2ecc71;
+
+    background: rgba(235, 255, 240, 0.9);
+
 }
 
-.schedule-event.current h3::before{
+
+/* Current event indicator */
+.schedule-event.current h3::before {
+
     content:"🟢 ";
+
 }
 
-.schedule-event h3{
+
+/* Event title */
+.schedule-event h3 {
+
     margin:0 0 8px;
+
+    font-size:1.3rem;
+
 }
 
-.schedule-event p{
+
+/* Event details */
+.schedule-event p {
+
     margin:6px 0;
+
 }
 
-.countdown{
+
+/* Countdown */
+.countdown {
+
     font-weight:bold;
+
     color:#0066cc;
+
+}
+
+
+/* Section headings */
+#schedule h2 {
+
+    color:white;
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,.4);
+
 }
