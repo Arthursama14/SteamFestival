@@ -959,11 +959,14 @@ button {
 
 }
 
-#schedule{
-	z-index: 9999;
-    max-width:900px;
-    margin:60px auto;
-    padding:20px;
+#schedule {
+    display:block !important;
+    position:relative;
+    z-index:99999;
+    background:white;
+    color:black;
+    padding:30px;
+    min-height:200px;
 }
 
 .schedule-event{
