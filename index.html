@@ -1,4 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>STEM Festival Bingo</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
 <body>
+
 
 <div class="sky">
 
@@ -9,37 +26,45 @@
 </div>
 
 
+
 <div class="content">
 
-    <img
+
+    <img 
         src="assets/steam_logo_color.png"
         class="festival-logo"
         alt="STEAM Festival Logo"
     >
 
-    <h1>STEM Festival Bingo</h1>
 
-    <p>Explore. Discover. Learn.</p>
-
-
-    <div class="passport-container">
-
-        <div id="bingo"></div>
-
-    </div>
+    <h1>
+        STEM Festival Bingo
+    </h1>
 
 
-    <button
-        class="reset-button"
-        onclick="resetCard()">
+    <p>
+        Explore. Discover. Learn.
+    </p>
 
-        🔄 Reset Passport
-
-    </button>
 
 </div>
+
+<div class="passport-container">
+
+    <div id="bingo"></div>
+
+</div>
+
+<button onclick="resetCard()" class="reset-button">
+
+    🔄 Reset Passport
+
+</button>
 
 <script src="sky.js"></script>
 <script src="bingo.js"></script>
 
+
 </body>
+
+</html>
