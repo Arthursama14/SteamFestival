@@ -657,3 +657,248 @@ button {
     }
 
 }
+
+/* ==========================================
+   STAMP IMAGE BEHAVIOR
+========================================== */
+
+.square-icon {
+
+    width:75%;
+
+    height:75%;
+
+    object-fit:contain;
+
+    flex-shrink:1;
+
+    pointer-events:none;
+
+    opacity:0;
+
+    transform-origin:center;
+
+}
+
+
+
+/* ==========================================
+   STAMP LANDING ANIMATION
+========================================== */
+
+.stamp-animation {
+
+    animation:
+
+        stampLand
+
+        .55s
+
+        cubic-bezier(.18,1.4,.3,1);
+
+}
+
+
+
+@keyframes stampLand {
+
+
+    0% {
+
+        opacity:0;
+
+        transform:
+
+            translateY(-80px)
+
+            scale(2.5)
+
+            rotate(var(--stamp-rotation));
+
+
+        filter:
+
+            blur(3px);
+
+    }
+
+
+
+    45% {
+
+        opacity:1;
+
+        transform:
+
+            translateY(10px)
+
+            scale(.8)
+
+            rotate(var(--stamp-rotation));
+
+
+        filter:none;
+
+    }
+
+
+
+    70% {
+
+        transform:
+
+            translateY(-5px)
+
+            scale(1.12)
+
+            rotate(var(--stamp-rotation));
+
+    }
+
+
+
+    100% {
+
+        opacity:1;
+
+        transform:
+
+            translateY(0)
+
+            scale(var(--stamp-scale))
+
+            rotate(var(--stamp-rotation));
+
+    }
+
+}
+
+
+
+/* ==========================================
+   ACTIVITY TEXT FADE OUT
+========================================== */
+
+
+.square-text {
+
+    width:95%;
+
+    font-size:
+
+        clamp(
+
+            8px,
+
+            .75vw,
+
+            14px
+
+        );
+
+
+    line-height:1.1;
+
+
+    overflow:hidden;
+
+
+    display:-webkit-box;
+
+
+    -webkit-line-clamp:3;
+
+
+    -webkit-box-orient:vertical;
+
+
+    transition:
+
+        opacity .25s ease,
+
+        transform .25s ease;
+
+}
+
+
+
+.text-fade {
+
+
+    opacity:0;
+
+
+    transform:
+
+        scale(.85);
+
+}
+
+
+
+/* ==========================================
+   PASSPORT IMPACT EFFECT
+========================================== */
+
+
+.passport-hit {
+
+
+    animation:
+
+        passportShake
+
+        .25s ease;
+
+}
+
+
+
+@keyframes passportShake {
+
+
+    0% {
+
+        transform:
+
+            translateY(0);
+
+    }
+
+
+    25% {
+
+        transform:
+
+            translateY(3px);
+
+    }
+
+
+    50% {
+
+        transform:
+
+            translateY(-3px);
+
+    }
+
+
+    75% {
+
+        transform:
+
+            translateY(2px);
+
+    }
+
+
+    100% {
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}

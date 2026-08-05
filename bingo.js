@@ -1,13 +1,21 @@
+/* ==========================================================
+   STEAM FESTIVAL PASSPORT
+   BINGO v2.0
+========================================================== */
+
 const COOKIE_NAME = "stemFestivalBingo";
 
-let bingoData = [];
-let completed = {};
+const ICON_FOLDER = "assets/icons/";
 
 const board = document.getElementById("bingo");
 
-/* ==========================================
+let bingoData = [];
+
+let completed = {};
+
+/* ==========================================================
    COOKIE FUNCTIONS
-========================================== */
+========================================================== */
 
 function setCookie(name, value, days = 365) {
 
@@ -44,27 +52,31 @@ function getCookie(name) {
 
 }
 
-/* ==========================================
-   LOAD / SAVE PROGRESS
-========================================== */
+/* ==========================================================
+   SAVE / LOAD PROGRESS
+========================================================== */
 
 function loadProgress() {
 
     const saved = getCookie(COOKIE_NAME);
 
-    if (saved) {
+    if (!saved) {
 
-        try {
+        completed = {};
 
-            completed = JSON.parse(saved);
+        return;
 
-        }
+    }
 
-        catch {
+    try {
 
-            completed = {};
+        completed = JSON.parse(saved);
 
-        }
+    }
+
+    catch {
+
+        completed = {};
 
     }
 
@@ -73,15 +85,106 @@ function loadProgress() {
 function saveProgress() {
 
     setCookie(
+
         COOKIE_NAME,
+
         JSON.stringify(completed)
+
     );
 
 }
 
-/* ==========================================
+/* ==========================================================
+   RANDOM HELPERS
+========================================================== */
+
+function randomRotation() {
+
+    return Math.random() * 16 - 8;
+
+}
+
+function randomScale() {
+
+    return 0.95 + Math.random() * 0.10;
+
+}
+
+/* ==========================================================
+   PASSPORT SHAKE
+========================================================== */
+
+function shakePassport() {
+
+    board.classList.remove("passport-hit");
+
+    void board.offsetWidth;
+
+    board.classList.add("passport-hit");
+
+}
+
+/* ==========================================================
+   PLAY STAMP ANIMATION
+========================================================== */
+
+function playStampAnimation(img) {
+
+    img.style.display = "block";
+
+    img.style.opacity = "1";
+
+    img.style.setProperty(
+
+        "--stamp-rotation",
+
+        randomRotation() + "deg"
+
+    );
+
+    img.style.setProperty(
+
+        "--stamp-scale",
+
+        randomScale()
+
+    );
+
+    img.classList.remove("stamp-animation");
+
+    void img.offsetWidth;
+
+    img.classList.add("stamp-animation");
+
+}
+
+/* ==========================================================
+   MARK A SQUARE COMPLETE
+========================================================== */
+
+function completeSquare(square, div, img, text) {
+
+    completed[square.id] = true;
+
+    saveProgress();
+
+    div.classList.add("marked");
+
+    text.classList.add("text-fade");
+
+    setTimeout(() => {
+
+        playStampAnimation(img);
+
+        shakePassport();
+
+    }, 300);
+
+}
+
+/* ==========================================================
    LOAD CSV
-========================================== */
+========================================================== */
 
 async function loadCSV() {
 
@@ -91,22 +194,21 @@ async function loadCSV() {
 
         const response = await fetch("bingo.csv");
 
-        console.log("CSV status:", response.status);
+        if (!response.ok) {
 
+            throw new Error(
+
+                `HTTP ${response.status}`
+
+            );
+
+        }
 
         const text = await response.text();
 
-        console.log("CSV contents:");
-        console.log(text);
-
-
         const rows = text.trim().split(/\r?\n/);
 
-        console.log("Rows found:", rows.length);
-
-
         rows.shift();
-
 
         bingoData = rows.map(row => {
 
@@ -120,16 +222,25 @@ async function loadCSV() {
 
                 passcode: cols[2].trim(),
 
-                png: cols[3]?.trim() || ""
+                png: cols[3]?.trim() || "",
+
+                description: cols[4]?.trim() || "",
+
+                link: cols[5]?.trim() || ""
 
             };
 
         });
 
+        console.log(
 
-        console.log("Parsed bingo data:");
-        console.log(bingoData);
+            "Loaded",
 
+            bingoData.length,
+
+            "activities."
+
+        );
 
         buildBoard();
 
@@ -137,45 +248,74 @@ async function loadCSV() {
 
     catch(error){
 
-        console.error("CSV loading failed:", error);
+        console.error(
+
+            "Unable to load bingo.csv",
+
+            error
+
+        );
 
     }
 
 }
-
-/* ==========================================
-   BUILD BOARD
-========================================== */
+/* ==========================================================
+   BUILD BINGO BOARD
+========================================================== */
 
 function buildBoard() {
 
-    console.log("Building board...");
+    console.log("Building bingo board...");
 
     board.innerHTML = "";
 
+
     bingoData.forEach(square => {
+
 
         const div = document.createElement("div");
 
         div.className = "square";
 
-        /* ---------- ICON ---------- */
+
+        /* ==================================================
+           CREATE STAMP IMAGE
+        ================================================== */
+
+
+        const img = document.createElement("img");
+
+        img.className = "square-icon";
+
+        img.alt = square.task;
+
 
         if (square.png) {
 
-            const img = document.createElement("img");
-
-            img.src = "assets/icons/" + square.png + ".png";;
-
-            img.className = "square-icon";
-
-            img.alt = square.task;
-
-            div.appendChild(img);
+            img.src = ICON_FOLDER + square.png;
 
         }
 
-        /* ---------- TEXT ---------- */
+
+        /*
+            Hide stamp until unlocked.
+            Opacity is used instead of display:none
+            so the image is already loaded.
+        */
+
+        img.style.opacity = "0";
+
+        img.style.display = "block";
+
+
+        div.appendChild(img);
+
+
+
+        /* ==================================================
+           CREATE ACTIVITY TEXT
+        ================================================== */
+
 
         const text = document.createElement("div");
 
@@ -183,82 +323,223 @@ function buildBoard() {
 
         text.textContent = square.task;
 
+
         div.appendChild(text);
+
+
+
+        /* ==================================================
+           RESTORE SAVED PROGRESS
+        ================================================== */
+
 
         if (completed[square.id]) {
 
+
             div.classList.add("marked");
+
+
+            text.style.display = "none";
+
+
+            img.style.opacity = "1";
+
+
+            img.style.setProperty(
+
+                "--stamp-rotation",
+
+                randomRotation() + "deg"
+
+            );
+
+
+            img.style.setProperty(
+
+                "--stamp-scale",
+
+                randomScale()
+
+            );
 
         }
 
-        div.addEventListener("click", () => {
 
-            if (completed[square.id])
-                return;
 
-            if (square.passcode.toUpperCase() === "FREE") {
+        /* ==================================================
+           CLICK EVENT
+        ================================================== */
 
-                completed[square.id] = true;
 
-                saveProgress();
+        div.addEventListener(
 
-                div.classList.add("marked");
+            "click",
 
-                return;
+            () => {
+
+
+                /*
+                    Prevent duplicate stamping
+                */
+
+                if (completed[square.id]) {
+
+                    return;
+
+                }
+
+
+
+                /*
+                    FREE SPACE
+                */
+
+                if (
+
+                    square.passcode.toUpperCase()
+
+                    ===
+
+                    "FREE"
+
+                ) {
+
+
+                    completeSquare(
+
+                        square,
+
+                        div,
+
+                        img,
+
+                        text
+
+                    );
+
+
+                    return;
+
+                }
+
+
+
+                /*
+                    ASK FOR PASSCODE
+                */
+
+                const code = prompt(
+
+                    "Enter the 4-digit booth passcode:"
+
+                );
+
+
+
+                if (code === null) {
+
+                    return;
+
+                }
+
+
+
+                /*
+                    VALIDATE ANSWER
+                */
+
+                if (
+
+                    code.trim()
+
+                    ===
+
+                    square.passcode.trim()
+
+                ) {
+
+
+                    completeSquare(
+
+                        square,
+
+                        div,
+
+                        img,
+
+                        text
+
+                    );
+
+
+                }
+
+                else {
+
+
+                    alert(
+
+                        "Incorrect passcode."
+
+                    );
+
+
+                }
+
 
             }
 
-            const code = prompt("Enter the 4-digit booth passcode:");
+        );
 
-            if (code === null)
-                return;
 
-            if (code.trim() === square.passcode) {
-
-                completed[square.id] = true;
-
-                saveProgress();
-
-                div.classList.add("marked");
-
-                alert("Correct!");
-
-            }
-            else {
-
-                alert("Incorrect passcode.");
-
-            }
-
-        });
 
         board.appendChild(div);
 
+
     });
 
-}
 
-/* ==========================================
+}
+/* ==========================================================
    RESET CARD
-========================================== */
+========================================================== */
 
 function resetCard() {
 
-    if (!confirm("Reset your bingo card?"))
+
+    const confirmReset = confirm(
+
+        "Reset your bingo passport?"
+
+    );
+
+
+    if (!confirmReset) {
+
         return;
+
+    }
+
 
     completed = {};
 
+
     saveProgress();
+
 
     buildBoard();
 
+
 }
 
-/* ==========================================
-   STARTUP
-========================================== */
+
+
+/* ==========================================================
+   START APPLICATION
+========================================================== */
+
 
 loadProgress();
+
 
 loadCSV();
