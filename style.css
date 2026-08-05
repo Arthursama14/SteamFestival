@@ -963,7 +963,6 @@ button {
     display:block !important;
     position:relative;
     z-index:99999;
-    background:white;
     color:black;
     padding:30px;
     min-height:200px;
