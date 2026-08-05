@@ -959,23 +959,39 @@ button {
 
 }
 
+#schedule{
+    max-width:900px;
+    margin:60px auto;
+    padding:20px;
+}
+
 .schedule-event{
-    border-left:4px solid #ddd;
-    padding:12px;
-    margin:10px 0;
-    border-radius:8px;
-    background:white;
+    background:#fff;
+    border-left:6px solid #ccc;
+    border-radius:12px;
+    padding:16px;
+    margin-bottom:18px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
 }
 
 .schedule-event.current{
     border-left-color:#2ecc71;
-    background:#eaf9ef;
+    background:#eefdf2;
 }
 
 .schedule-event.current h3::before{
-    content:"🟢 NOW ";
+    content:"🟢 ";
 }
 
-.schedule-event.upcoming{
-    opacity:1;
+.schedule-event h3{
+    margin:0 0 8px;
+}
+
+.schedule-event p{
+    margin:6px 0;
+}
+
+.countdown{
+    font-weight:bold;
+    color:#0066cc;
 }
