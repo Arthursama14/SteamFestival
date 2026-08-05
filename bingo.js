@@ -292,7 +292,7 @@ function buildBoard() {
 
         if (square.png) {
 
-            img.src = ICON_FOLDER + square.png;
+            img.src = ICON_FOLDER + square.png + ".png";
 
         }
 
