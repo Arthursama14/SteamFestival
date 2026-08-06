@@ -119,7 +119,9 @@ for(let i = 0; i < 20; i++){
 let last =
 performance.now();
 
-let lightOffset = 0;
+let rayOffset1 = 0;
+let rayOffset2 = 0;
+let rayOffset3 = 0;
 
 function animate(time){
 
@@ -159,16 +161,40 @@ function animate(time){
 
     // Animate sunlight
 
-    lightOffset += delta * 8;
+    rayOffset1 += delta * 3;
+	rayOffset2 += delta * 7;
+	rayOffset3 += delta * 12;
 
-    lightLayer.style.backgroundPosition =
-        `${lightOffset}px 0`;
+	// Slow wide rays
 
-    // Gentle shimmering
+	lightLayer.style.backgroundPosition =
+`	${rayOffset1}px 0`;
 
-    lightLayer.style.opacity =
-        0.16 +
-        Math.sin(time / 2500) * 0.03;
+	// Medium rays
+
+	rayLayer.style.backgroundPosition =
+`	${-rayOffset2}px 0`;
+
+	// Thin bright rays
+
+	sparkleLayer.style.backgroundPosition =
+`	${rayOffset3}px 0`;
+
+	// Gentle shimmering
+
+	const shimmer =
+	0.17 +
+	Math.sin(time/2800)*0.03;
+
+	lightLayer.style.opacity =
+	shimmer;
+
+	rayLayer.style.opacity =
+	shimmer * 0.8;
+
+	sparkleLayer.style.opacity =
+	0.08 +
+	Math.sin(time/1500)*0.03;
 
     requestAnimationFrame(
         animate
