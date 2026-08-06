@@ -323,7 +323,7 @@ p {
     aspect-ratio:17 / 22;
 
 
-    margin-top:40px;
+    margin-top:80px;
 
 
     margin-left:-25%;
@@ -587,6 +587,12 @@ button {
     .content {
 
         padding-top: 20px;
+
+    }
+	
+    .map-section {
+
+        margin-bottom: 350px;
 
     }
 
