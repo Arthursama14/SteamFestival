@@ -418,7 +418,7 @@ p {
     overflow:hidden;
 
 
-    padding:5px;
+    padding:2px;
 
 
     cursor:pointer;
@@ -429,7 +429,7 @@ p {
 
     background:
 
-        rgba(255,255,255,.75);
+        rgba(255,255,255,.15);
 
 
     backdrop-filter:
@@ -439,7 +439,7 @@ p {
 
     border:
 
-        2px solid rgba(255,255,255,.9);
+        2px solid rgba(255,255,255,.1);
 
 
     border-radius:10px;
@@ -540,7 +540,7 @@ p {
 
     background:
 
-        rgba(60,179,113,.85);
+        rgba(255,255,255,.05);
 
 
     color:white;
