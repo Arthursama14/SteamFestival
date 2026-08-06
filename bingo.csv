@@ -1,26 +1,26 @@
-ID,Activity,Passcode,png,description,link
-1,Tools of Kismet,1234,stamp_p,,
-2,LaShonda Cooks (Art),1234,stamp_p,,
-3,Dabney Sounds (DJ) (Stage),1234,stamp_p,,
-4,HAKing Innovation (Inside),1234,stamp_p,,
-5,Lyrik Hunter (Stage/Water Garden),1234,stamp_p,,
-6,Movement Empress (Stage),1234,stamp_p,,
-7,Parkland,1234,stamp_p,,
-8,Uplift Education,1234,stamp_p,,
-9,Jarrad Hamilton,1234,stamp_p,,
-10,Social Communication Lab UTD,1234,stamp_p,,
-11,Frisco RoughRiders,1234,stamp_p,,
-12,Pretty & Polished Bracelets,1234,stamp_p,,
-13,Free Play Children’s Museum,1234,stamp_p,,
-14,Enlightened Soul Wholistic Living,1234,stamp_p,,
-15,Blue Sun Services,1234,stamp_p,,
-16,Smoke Chicken Salad,1234,stamp_p,,
-17,Lunar Sunshine Creatures,1234,stamp_p,,
-18,Kierra Freeman,1234,stamp_p,,
-19,Pathways Texas,1234,stamp_p,,
-20,Yangua Wellness,1234,stamp_p,,
-21,UTA EEC Drones,1234,stamp_p,,
-22,Ofen Lab UTD,1234,stamp_p,,
-23,Crayola Imagine Arts Academy,1234,stamp_p,,
-24,Everything Can Be Painted,1234,stamp_p,,
-25,Simply Bonded,1234,stamp_p,,
+ID,Activity,Passcode,png,description,link,zone,
+1,Tools of Kismet,1234,tools_of_kismet,,,Zone 1,https://www.gigsalad.com/tools_of_kismet_dallas
+2,LaShonda Cooks (Art),1234,lashonda_cooks,,,Zone 2,https://www.shondasart.com/
+3,Dabney Sounds (DJ) (Stage),1234,dabney_sounds,,,Zone 3,https://dabney-sounds.ueniweb.com/
+4,HAKing Innovation (Inside),1234,haking_innovation,,,Zone 4,https://www.hakinginnovation.org/
+5,Lyrik Hunter (Stage/Water Garden),1234,lyrik_hunter,,,Zone 5,https://www.instagram.com/lyrik_hunter/
+6,Movement Empress (Stage),1234,movement_empress,,,Zone 6,https://www.instagram.com/movementempress/
+7,Parklan,1234,parkland,,,Zone 7,https://poisoncontrol.org/home/
+8,Uplift Education,1234,uplift_education,,,Zone 8,https://uplifteducation.org/
+9,Jarrad Hamilton,1234,jarrad_hamilton,,,Zone 9,https://www.jarradhamilton.com/home
+10,Social Communication Lab UTD,1234,social_communication_lab,,,Zone 10,https://labs.utdallas.edu/socialcommunicationlab/
+11,Frisco RoughRiders,1234,frisco_roughriders,,,Zone 11,https://www.mlb.com/milb/frisco
+12,Pretty & Polished Bracelets,1234,pp_bracelets,,,Zone 12,https://www.designsbysasha.com/collections/bracelets
+13,Free Play Children’s Museum,1234,fpcm,,,Zone 13,https://www.fpchildrensmuseum.com/
+14,Enlightened Soul Wholistic Living,1234,eswl,,,Zone 14,https://www.theenlightenedsouls.com/
+15,Blue Sun Services,1234,bss,,,Zone 15,https://www.bluesunsvcs.com/
+16,TJ Hunter Engineering ,1234,tjhe,,,Zone 16,https://www.tjhengineers.com/
+17,Lunar Sunshine Creatures,1234,lsc,,,Zone 17,https://www.instagram.com/lunarsunshinecreatures/
+18,Kierra Freeman,1234,stamp_p,,,Zone 18,
+19,Pathways Texas,1234,pathways_texas,,,Zone 19,https://pathwaystx.org/
+20,Yangua Wellness,1234,yangua_wellness,,,Zone 20,https://yanguawellness.com/
+21,UTA EEC Drones,1234,uta_eec_d,,,Zone 21,https://web-ded.uta.edu/wconnect/ShowSchedule.awp?Mode=GROUP&Group=CERDRN&SubGroup=CER&Title=Drones%21
+22,Ofen Lab UTD,1234,ofen_lab_utd,,,Zone 22,https://labs.utdallas.edu/ofenlab/
+23,Crayola Imagine Arts Academy,1234,ciaa,,,Zone 23,
+24,Everything Can Be Painted,1234,stamp_p,,,Zone 24,
+25,Simply Bonded,1234,simply_bonded,,,Zone 25,
