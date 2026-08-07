@@ -116,18 +116,11 @@ cloud.style.opacity =
 
 
 cloud.style.backgroundImage =
-
-`url(${cloudImages[
-    Math.floor(
-        Math.random() * cloudImages.length
-    )
+    `url(${cloudImages[
+        Math.floor(
+            Math.random() * cloudImages.length
+        )
 ]})`;
-
-
-clouds.push(data);
-```
-
-}
 
 // ------------------------------------
 // Create Clouds
