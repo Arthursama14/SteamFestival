@@ -1,113 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
+#festivalMapSection {
 
-<head>
+    width: 80%;
 
-<meta charset="UTF-8">
+    max-width: 650px;
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    margin: 50px auto;
 
-<title>STEM Festival Bingo</title>
-
-<link rel="stylesheet" href="style.css">
-
-</head>
+}
 
 
-<body>
+#mapImageWrapper {
+
+    position: relative;
+
+    width: 100%;
+
+}
 
 
-<div class="sky">
+#festivalMap {
 
-    <div class="sun"></div>
+    display: block;
 
-    <div id="cloudLayer"></div>
+    width: 100%;
 
-</div>
+    height: auto;
 
+    border-radius: 12px;
 
+    position: relative;
 
-<div class="content">
+    z-index: 1;
 
-
-    <img 
-        src="assets/steam_logo_color.png"
-        class="festival-logo"
-        alt="STEAM Festival Logo"
-    >
+}
 
 
-	<section class="map-section">
+#mapIcons {
 
-    <h2>Festival Map</h2>
+    position: absolute;
 
-    <p class="section-subtitle">
-        Explore the festival and click a location to learn more.
-    </p>
+    inset: 0;
 
-    <div id="festivalMapSection">
+    z-index: 2;
 
-			<img
-				id="festivalMap"
-				src="assets/festival_map.png"
-				alt="Festival Map">
-
-			<div id="mapIcons"></div>
-
-		</div>
-
-		<div id="mapDirectory"></div>
-
-	</section>
-
-	<div id="mapPopup" class="hidden">
-		<button id="closePopup">✕</button>
-
-		<h2 id="popupTitle"></h2>
-
-		<p id="popupDescription"></p>
-
-		<img id="popupImage">
-
-		<a id="popupLink" target="_blank">Learn More</a>
-
-	</div>
-
-<img id="passport"...>
+}
 
 
-    <h1>
-        STEM Festival Bingo
-    </h1>
+.mapIcon {
+
+    position: absolute;
+
+    width: 40px;
+
+    cursor: pointer;
+
+    transform:
+        translate(-50%, -100%);
+
+    transition: .25s;
+
+}
 
 
-    <p>
-        Explore. Discover. Learn.
-    </p>
+.mapIcon.selected {
 
+    transform:
+        translate(-50%, -100%)
+        scale(1.4);
 
-</div>
+    filter:
+        drop-shadow(0 0 10px gold);
 
-<div class="passport-container">
-
-    <div id="bingo"></div>
-
-</div>
-
-<button onclick="resetCard()" class="reset-button">
-
-    🔄 Reset Passport
-
-</button>
-
-<div id="schedule"></div>
-
-<script src="sky.js"></script>
-<script src="bingo.js"></script>
-<script src="schedule.js"></script>
-<script src="map.js"></script>
-
-
-</body>
-
-</html>
+}

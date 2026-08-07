@@ -1147,21 +1147,23 @@ button {
 
 #festivalMapSection {
 
-    position: relative;
+    width: 80%;
 
-    width: min(700px, 85vw);
+    max-width: 650px;
 
     margin: 50px auto;
 
-    padding: 40px;
+}
 
-    background: rgba(255,255,255,0.15);
 
-    border-radius: 20px;
+#mapImageWrapper {
 
-    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    position: relative;
+
+    width: 100%;
 
 }
+
 
 #festivalMap {
 
@@ -1173,28 +1175,39 @@ button {
 
     border-radius: 12px;
 
-}
+    position: relative;
 
-#mapIcons{
-
-    position:absolute;
-
-    inset:0;
+    z-index: 1;
 
 }
+
+
+#mapIcons {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+}
+
 
 .mapIcon {
 
-    position:absolute;
+    position: absolute;
 
-    cursor:pointer;
+    width: 40px;
+
+    cursor: pointer;
 
     transform:
         translate(-50%, -100%);
 
-    transition:.25s;
+    transition: .25s;
 
 }
+
 
 .mapIcon.selected {
 
@@ -1204,12 +1217,5 @@ button {
 
     filter:
         drop-shadow(0 0 10px gold);
-
-}
-#festivalMapSection {
-
-    position: relative;
-
-    width: 100%;
 
 }
