@@ -13,9 +13,8 @@ const balloonImages = [
 ];
 
 
-const sky =
+const balloonSky =
 document.querySelector(".sky");
-
 
 const balloons = [];
 
@@ -177,7 +176,7 @@ function createBalloon(customX = null){
 // Click Spawn
 // ==========================================
 
-sky.addEventListener(
+balloonSky.addEventListener(
     "click",
     event => {
 
