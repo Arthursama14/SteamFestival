@@ -287,38 +287,26 @@ function buildDirectory(){
 // HIGHLIGHT ICON
 // ================================
 
-function selectIcon(index){
+function selectIcon(index) {
 
+    const icons = document.querySelectorAll(".mapIcon");
 
-    const icons =
-        document.querySelectorAll(
-            ".mapIcon"
-        );
-
-
-    icons.forEach(icon=>{
-
-        icon.classList.remove(
-            "selected"
-        );
-
+    // Remove selection from all icons
+    icons.forEach(icon => {
+        icon.classList.remove("selected");
     });
 
+    // Make sure the requested icon exists
+    if (!icons[index]) {
+        console.warn("Map icon not found for index:", index);
+        return;
+    }
 
+    // Highlight selected icon
+    icons[index].classList.add("selected");
 
-    icons[index]
-        .classList.add(
-            "selected"
-        );
-
-
-    selectedIcon =
-        icons[index];
-
-
+    selectedIcon = icons[index];
 }
-
-
 
 
 
