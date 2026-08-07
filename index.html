@@ -1,74 +1,137 @@
-#festivalMapSection {
+<!DOCTYPE html>
+<html lang="en">
 
-    width: 80%;
+<head>
 
-    max-width: 650px;
+<meta charset="UTF-8">
 
-    margin: 50px auto;
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-}
+<title>STEM Festival Bingo</title>
 
+<link rel="stylesheet" href="style.css">
 
-#mapImageWrapper {
-
-    position: relative;
-
-    width: 100%;
-
-}
+</head>
 
 
-#festivalMap {
-
-    display: block;
-
-    width: 100%;
-
-    height: auto;
-
-    border-radius: 12px;
-
-    position: relative;
-
-    z-index: 1;
-
-}
+<body>
 
 
-#mapIcons {
+<div class="sky">
 
-    position: absolute;
+    <div class="sun"></div>
 
-    inset: 0;
+    <div id="cloudLayer"></div>
 
-    z-index: 2;
-
-}
+</div>
 
 
-.mapIcon {
 
-    position: absolute;
-
-    width: 40px;
-
-    cursor: pointer;
-
-    transform:
-        translate(-50%, -100%);
-
-    transition: .25s;
-
-}
+<div class="content">
 
 
-.mapIcon.selected {
+    <img 
+        src="assets/steam_logo_color.png"
+        class="festival-logo"
+        alt="STEAM Festival Logo"
+    >
 
-    transform:
-        translate(-50%, -100%)
-        scale(1.4);
 
-    filter:
-        drop-shadow(0 0 10px gold);
+    <section class="map-section">
 
-}
+        <h2>Festival Map</h2>
+
+        <p class="section-subtitle">
+            Explore the festival and click a location to learn more.
+        </p>
+
+
+        <div id="festivalMapSection">
+
+
+            <!-- Map image and icons share the same coordinate space -->
+
+            <div id="mapImageWrapper">
+
+
+                <img
+                    id="festivalMap"
+                    src="assets/festival_map.png"
+                    alt="Festival Map"
+                >
+
+
+                <div id="mapIcons"></div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div id="mapDirectory"></div>
+
+
+    </section>
+
+
+    <div id="mapPopup" class="hidden">
+
+        <button id="closePopup">✕</button>
+
+        <h2 id="popupTitle"></h2>
+
+        <p id="popupDescription"></p>
+
+        <img id="popupImage" alt="">
+
+        <a id="popupLink" target="_blank">
+            Learn More
+        </a>
+
+    </div>
+
+
+    <img id="passport"...>
+
+
+    <h1>
+        STEM Festival Bingo
+    </h1>
+
+
+    <p>
+        Explore. Discover. Learn.
+    </p>
+
+
+</div>
+
+
+<div class="passport-container">
+
+    <div id="bingo"></div>
+
+</div>
+
+
+<button onclick="resetCard()" class="reset-button">
+
+    🔄 Reset Passport
+
+</button>
+
+
+<div id="schedule"></div>
+
+
+<script src="sky.js"></script>
+<script src="bingo.js"></script>
+<script src="schedule.js"></script>
+<script src="map.js"></script>
+
+
+</body>
+
+</html>
