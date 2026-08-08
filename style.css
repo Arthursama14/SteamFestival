@@ -622,19 +622,48 @@ button {
 
     /* Bingo overlay */
 
-    #bingo {
+    #bingo,
+	#bingo2 {
 
-        top: 24%;
+    position: absolute;
 
-        right: 5%;
+    top: 25%;
 
-        width: 43%;
+    width: 42%;
+    height: 45%;
 
-        height: 44%;
+    display: grid;
 
-        gap: 2px;
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
 
-    }
+    grid-template-rows:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 4px;
+
+    z-index: 20;
+}
+
+
+/* LEFT GRID */
+
+#bingo {
+
+    left: 4%;
+	right: auto;
+
+}
+
+
+/* RIGHT GRID */
+
+#bingo2 {
+
+    left: 54%;
+	right: auto;
+
+}
 
     .square {
 
