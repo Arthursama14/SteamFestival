@@ -362,7 +362,7 @@ p {
     top:25%;
 
 
-    right:4%;
+    right:-3%;
 
 
     width:93%;
@@ -1161,6 +1161,16 @@ button {
 
 }
 
+
+#mapImageWrapper {
+
+    position: relative;
+
+    width: 100%;
+
+}
+
+
 #festivalMap {
 
     display: block;
@@ -1173,26 +1183,33 @@ button {
 
 }
 
-#mapIcons{
 
-    position:absolute;
+#mapIcons {
 
-    inset:0;
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
 
 }
 
+
 .mapIcon {
 
-    position:absolute;
+    position: absolute;
 
-    cursor:pointer;
+    cursor: pointer;
+
+    pointer-events: auto;
 
     transform:
         translate(-50%, -100%);
 
-    transition:.25s;
+    transition: .25s;
 
 }
+
 
 .mapIcon.selected {
 
@@ -1202,12 +1219,5 @@ button {
 
     filter:
         drop-shadow(0 0 10px gold);
-
-}
-#festivalMapSection {
-
-    position: relative;
-
-    width: 100%;
 
 }
