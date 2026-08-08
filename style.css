@@ -326,7 +326,7 @@ p {
     margin-top:80px;
 
 
-    margin-left:-25%;
+    margin-left:-1%;
 
 
     background-image:
@@ -365,7 +365,7 @@ p {
     right:4%;
 
 
-    width:45%;
+    width:93%;
 
 
     height:45%;
@@ -376,7 +376,7 @@ p {
 
     grid-template-columns:
 
-        repeat(5,minmax(0,1fr));
+        repeat(10,minmax(0,1fr));
 
 
     grid-template-rows:
@@ -622,48 +622,19 @@ button {
 
     /* Bingo overlay */
 
-    #bingo,
-	#bingo2 {
+    #bingo {
 
-    position: absolute;
+        top: 24%;
 
-    top: 25%;
+        right: 5%;
 
-    width: 42%;
-    height: 45%;
+        width: 43%;
 
-    display: grid;
+        height: 44%;
 
-    grid-template-columns:
-        repeat(5, minmax(0, 1fr));
+        gap: 2px;
 
-    grid-template-rows:
-        repeat(5, minmax(0, 1fr));
-
-    gap: 4px;
-
-    z-index: 20;
-}
-
-
-/* LEFT GRID */
-
-#bingo {
-
-    left: 4%;
-	right: auto;
-
-}
-
-
-/* RIGHT GRID */
-
-#bingo2 {
-
-    left: 54%;
-	right: auto;
-
-}
+    }
 
     .square {
 
@@ -1176,23 +1147,21 @@ button {
 
 #festivalMapSection {
 
-    width: 80%;
+    position: relative;
 
-    max-width: 650px;
+    width: min(700px, 85vw);
 
     margin: 50px auto;
 
+    padding: 40px;
+
+    background: rgba(255,255,255,0.15);
+
+    border-radius: 20px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+
 }
-
-
-#mapImageWrapper {
-
-    position: relative;
-
-    width: 100%;
-
-}
-
 
 #festivalMap {
 
@@ -1204,39 +1173,28 @@ button {
 
     border-radius: 12px;
 
-    position: relative;
-
-    z-index: 1;
-
 }
 
+#mapIcons{
 
-#mapIcons {
+    position:absolute;
 
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 2;
+    inset:0;
 
 }
-
 
 .mapIcon {
 
-    position: absolute;
+    position:absolute;
 
-    width: 40px;
-
-    cursor: pointer;
+    cursor:pointer;
 
     transform:
         translate(-50%, -100%);
 
-    transition: .25s;
+    transition:.25s;
 
 }
-
 
 .mapIcon.selected {
 
@@ -1248,17 +1206,10 @@ button {
         drop-shadow(0 0 10px gold);
 
 }
+#festivalMapSection {
 
-.festival-balloon {
+    position: relative;
 
-    position: fixed;
-
-    width: 80px;
-
-    height:auto;
-
-    pointer-events:none;
-
-    z-index:10;
+    width: 100%;
 
 }
