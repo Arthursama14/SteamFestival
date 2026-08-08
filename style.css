@@ -1226,3 +1226,118 @@ button {
     pointer-events: auto;
     cursor: pointer;
 }
+
+```css
+/* ==========================================
+   FESTIVAL THANK YOU / EVALUATION
+========================================== */
+
+.thank-you-section {
+
+    position: relative;
+
+    z-index: 100;
+
+    width: min(800px, 90vw);
+
+    margin: 80px auto 50px;
+
+    padding: 40px 30px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    border-radius: 20px;
+
+    box-sizing: border-box;
+
+    pointer-events: auto;
+
+}
+
+
+/* Thank-you message */
+
+.thank-you-section h1 {
+
+    margin-bottom: 15px;
+
+}
+
+
+.thank-you-message {
+
+    line-height: 1.5;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* Evaluation box */
+
+.evaluation-reminder {
+
+    position: relative;
+
+    z-index: 101;
+
+    pointer-events: auto;
+
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.7);
+
+    border-radius: 15px;
+
+}
+
+
+.evaluation-reminder h2 {
+
+    margin-top: 0;
+
+}
+
+
+.evaluation-reminder p {
+
+    line-height: 1.5;
+
+}
+
+
+/* Evaluation button */
+
+.evaluation-link {
+
+    position: relative;
+
+    z-index: 102;
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 12px 24px;
+
+    border-radius: 25px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    pointer-events: auto;
+
+}
+
+
+/* Make sure the background clouds cannot block clicks */
+
+#cloudLayer {
+
+    pointer-events: none;
+
+}
+```
