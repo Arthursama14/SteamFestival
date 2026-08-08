@@ -1341,3 +1341,108 @@ button {
 
 }
 ```
+/* ==========================================
+   MAP INFORMATION POPUP
+========================================== */
+
+#mapPopup {
+
+    position: fixed;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: min(500px, 85vw);
+
+    max-height: 80vh;
+
+    overflow-y: auto;
+
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+
+    z-index: 1000;
+
+    text-align: center;
+
+}
+
+
+/* Hidden state */
+
+#mapPopup.hidden {
+
+    display: none;
+
+}
+
+
+/* Close button */
+
+#closePopup {
+
+    position: absolute;
+
+    top: 10px;
+
+    right: 15px;
+
+    margin: 0;
+
+    padding: 5px 10px;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+}
+
+
+/* Popup image */
+
+#popupImage {
+
+    display: block;
+
+    width: 100%;
+
+    max-height: 300px;
+
+    object-fit: contain;
+
+    margin: 20px auto;
+
+    border-radius: 12px;
+
+}
+
+
+/* Popup link */
+
+#popupLink {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 10px 20px;
+
+    border-radius: 20px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+}
