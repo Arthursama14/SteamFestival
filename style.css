@@ -1196,23 +1196,24 @@ button {
 
 
 .mapIcon {
+
     position: absolute;
 
     cursor: pointer;
 
     transform:
         translate(-50%, -100%)
-        scale(.8);
+        scale(var(--map-icon-scale, .8));
 
     transition: .25s;
-}
 
+}
 
 .mapIcon.selected {
 
     transform:
         translate(-50%, -100%)
-        scale(1.4);
+        scale(calc(var(--map-icon-scale, .8) * 1.4));
 
     filter:
         drop-shadow(0 0 10px gold);
