@@ -610,13 +610,11 @@ button {
 
         width: 180vw;          /* Make passport much larger */
 
-        max-width: none;       /* Ignore desktop max width */
-
-        margin-left: -85vw;    /* Push most of it off-screen */
+        max-width: 100vw;       /* Ignore desktop max width */
 
         margin-top: -500px;
 		
-		transform: rotate(5deg);
+		
 
     }
 
