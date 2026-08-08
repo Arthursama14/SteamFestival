@@ -1219,3 +1219,10 @@ button {
         drop-shadow(0 0 10px gold);
 
 }
+
+.checkin-link {
+    position: relative;
+    z-index: 100;
+    pointer-events: auto;
+    cursor: pointer;
+}
