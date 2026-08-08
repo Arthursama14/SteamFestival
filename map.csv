@@ -1,49 +1,52 @@
-place,type,x,y,zone,description,image,link,icon,labled
-ballroom,area,1054,2552,Main Building,Many things happen here,na,na,location_pin,yes
-VR Meditation ,,0,0,Canopy Conference Room ,Many things happen here,na,na,location_pin,no
-HAKing Innovation ,,0,0,Earth Keepers Room (Indoors),Many things happen here,na,na,location_pin,no
-Lyrik Hunter ,Performance,0,0,Earth Keepers Room (Indoors) and Main Stage Grand Hall Ballroom ,Many things happen here,na,na,location_pin,no
-Lyrik Hunter ,Performance,0,0,Main Stage,Many things happen here,na,na,location_pin,no
-FlowOurs,,0,0,Grand Hall Ballroom,Many things happen here,na,na,vendor_pin,no
-TJ Hunter Engineering ,,0,0,Grand Hall Ballroom,Many things happen here,na,na,vendor_pin,no
-2 Inspire Peace Inc.,,0,0,Grand Hall Ballroom,Many things happen here,na,na,vendor_pin,no
-Tesla,,0,0,Grand Hall Ballroom,Many things happen here,na,na,vendor_pin,no
-Office of Arts and Culture (Lyrik and Movement Empress),,0,0,Grand Hall Ballroom,Many things happen here,na,na,vendor_pin,no
-Credit Union of Texas,,0,0,Grand Hall Ballroom,Many things happen here,na,na,vendor_pin,no
-Frisco RoughRiders,,0,0,Grand Hall Ballroom,Many things happen here,na,na,vendor_pin,no
-Parkland,,0,0,Grand Hall Ballroom,Many things happen here,na,na,vendor_pin,no
-AT&T,,0,0,Grand Hall Ballroom,Many things happen here,na,na,vendor_pin,no
-UTD - Social Communication Lab,,0,0,Grand Hall Ballroom,Many things happen here,na,na,vendor_pin,no
-UTD - Ofen Lab ,,0,0,Grand Hall Ballroom,Many things happen here,na,na,vendor_pin,no
-Dabney Sounds (DJ),Performance,0,0,Main Stage,Many things happen here,na,na,location_pin,no
-Info Table ,,0,0,Grand Hall Ballroom,Many things happen here,na,na,location_pin,yes
-Registration/Check In ,,2069,2667,Main Entrance ,Many things happen here,na,na,location_pin,yes
-Free Play Children’s Museum,,0,0,Centennial House,Many things happen here,na,na,location_pin,no
-Enlightened Soul Wholistic Living,,1736,660,Grand Allee Du Meadows - Fountain (Far East End),Many things happen here,na,na,vendor_pin,no
-Blue Sun Services,,1891,717,Grand Allee Du Meadows - Fountain (Far East End),Many things happen here,na,na,vendor_pin,no
-Lunar Sunshine Creatures,,1552,1421,Grand Allee Du Meadows,Many things happen here,na,na,vendor_pin,no
-Kierra Freeman,,1652,1251,Grand Allee Du Meadows,Many things happen here,na,na,vendor_pin,no
-Pathways Texas,,1764,985,Grand Allee Du Meadows,Many things happen here,na,na,vendor_pin,no
-Yangua Wellness,,1527,960,Grand Allee Du Meadows,Many things happen here,na,na,vendor_pin,no
-Court and Character Basketball ,,2072,2384,Grand Allee Du Meadows,Many things happen here,na,na,vendor_pin,no
-Simply Bonded,,1447,1111,Grand Allee Du Meadows,Many things happen here,na,na,vendor_pin,no
-LaShonda Cooks (Art),,0,0,Gossip Girl/Herkimer Overlook ,Many things happen here,na,na,vendor_pin,no
-Tools of Kismet,,0,0,Grand Hall Ballroom Terrace ,Many things happen here,na,na,vendor_pin,no
-Mystic Kathryn - Face Painting,,0,0,Grand Hall Ballroom Terrace ,Many things happen here,na,na,vendor_pin,no
-Ady/Moni (Combined Table),,0,0,Grand Hall Ballroom Terrace ,Many things happen here,na,na,vendor_pin,no
-Pretty & Polished Bracelets,,0,0,Grand Hall Ballroom Terrace ,Many things happen here,na,na,vendor_pin,no
-Natural Performer,,0,0,Grand Hall Ballroom Terrace ,Many things happen here,na,na,vendor_pin,no
-Possums & Apples,,0,0,Grand Hall Ballroom Terrace ,Many things happen here,na,na,vendor_pin,no
-Hunt Art Studio,,0,0,Grand Hall Ballroom Terrace ,Many things happen here,na,na,vendor_pin,no
-Ky’s Lemonade,,0,0,Grand Hall Ballroom Terrace ,Many things happen here,na,na,location_pin,no
-UTA EEC Drones,,0,0,Grand Allee Du Meadows,Many things happen here,na,na,location_pin,no
-RoboPlayers ,,1708,764,Grand Allee Du Meadows,Many things happen here,na,na,vendor_pin,no
-Crayola Imagine Arts Academy,,0,0,Natural Playscape Picnic & Picnic Pavillion,Many things happen here,na,na,vendor_pin,no
-Everything Can Be Painted,,0,0,Natural Playscape Picnic & Picnic Pavillion,Many things happen here,na,na,vendor_pin,no
-Food Truck - Kona Ice,food truck,1632,3164,Inside Ticket Gate,Many things happen here,na,na,food_truck_pin,no
-Food Truck - Funnel Cake Gone Wild,food truck,1838,3164,Inside Ticket Gate,Many things happen here,na,na,food_truck_pin,no
-Food Truck - Betty's Wingz and Thingz,food truck,2015,3164,Inside Ticket Gate,Many things happen here,na,na,food_truck_pin,no
-Bathroom,,738,712,,Many things happen here,na,na,bathroom_pin,no
-Bathroom,,870,712,,Many things happen here,na,na,bathroom_pin,no
-Bathroom,,771,2810,,Many things happen here,na,na,bathroom_pin,no
-water,,,,Grand Hall Ballroom,Many things happen here,na,na,water_pin,no
+place,type,x,y,Location,description,image,link,icon,labled,Zone
+2 Inspire Peace Inc.,,1054,2552,Grand Hall Ballroom,,na,na,vendor_pin,no,Zone 1
+Ady/Moni (Combined Table),,1054,2552,Grand Hall Ballroom Terrace ,,na,na,vendor_pin,no,Zone 3
+AT&T,,1054,2552,Grand Hall Ballroom,,na,na,vendor_pin,no,Zone 1
+Ballroom,area,1054,2552,Main Building,,na,na,location_pin,yes,Zone 1
+Bathroom,,738,712,,,na,na,bathroom_pin,no,Zone 1
+Bathroom,,870,712,,,na,na,bathroom_pin,no,Zone 1
+Bathroom,,771,2810,,,na,na,bathroom_pin,no,Zone 1
+Court and Character Basketball ,,2072,2384,Grand Allee Du Meadows,,na,na,vendor_pin,no,Zone 1
+Crayola Imagine Arts Academy,,1054,2552,Natural Playscape Picnic & Picnic Pavillion,,na,na,vendor_pin,no,Zone 4
+Credit Union of Texas,,1054,2552,Grand Hall Ballroom,,na,na,vendor_pin,no,Zone 1
+Dabney Sounds (DJ),Performance,1054,2552,Main Stage,,na,na,location_pin,no,Zone 1
+Enlightened Soul Wholistic Living,,1736,660,Grand Allee Du Meadows,,na,na,vendor_pin,no,Zone 2
+Everything Can Be Painted,,1054,2552,Natural Playscape Picnic & Picnic Pavillion,,na,na,vendor_pin,no,Zone 4
+FlowOurs,,1054,2552,Grand Hall Ballroom,,na,na,vendor_pin,no,Zone 1
+Food Truck - Betty's Wingz and Thingz,food truck,2015,3164,Inside Ticket Gate,,na,na,food_truck_pin,no,Zone 1
+Food Truck - Funnel Cake Gone Wild,food truck,1838,3164,Inside Ticket Gate,,na,na,food_truck_pin,no,Zone 1
+Food Truck - Kona Ice,food truck,1632,3164,Inside Ticket Gate,,na,na,food_truck_pin,no,Zone 1
+Free Play Children’s Museum,,0,0,Centennial House,,na,na,location_pin,no,Zone 2
+Frisco RoughRiders,,1054,2552,Grand Hall Ballroom,,na,na,vendor_pin,no,Zone 1
+HAKing Innovation ,,1054,2552,Earth Keepers Room,,na,na,location_pin,no,Zone 1
+Hunt Art Studio,,1054,2552,Grand Hall Ballroom Terrace ,,na,na,vendor_pin,no,Zone 3
+Info Table ,,1054,2552,Grand Hall Ballroom,,na,na,location_pin,yes,Zone 1
+Kierra Freeman,,1652,1251,Grand Allee Du Meadows,,na,na,vendor_pin,no,Zone 2
+Ky’s Lemonade,,0,0,Grand Hall Ballroom Terrace ,,na,na,location_pin,no,Zone 3
+LaShonda Cooks (Art),,0,0,Gossip Girl/Herkimer Overlook ,,na,na,vendor_pin,no,Zone 3
+Lunar Sunshine Creatures,,1552,1421,Grand Allee Du Meadows,,na,na,vendor_pin,no,Zone 2
+Lyrik Hunter ,Performance,1054,2552,Earth Keepers Room,,na,na,location_pin,no,Zone 1
+Lyrik Hunter ,Performance,1054,2552,Main Stage,,na,na,location_pin,no,Zone 1
+Mystic Kathryn - Face Painting,,1054,2552,Grand Hall Ballroom Terrace ,,na,na,vendor_pin,no,Zone 3
+Natural Performer,,1054,2552,Grand Hall Ballroom Terrace ,,na,na,vendor_pin,no,Zone 3
+Office of Arts and Culture (Lyrik and Movement Empress),,1054,2552,Grand Hall Ballroom,,na,na,vendor_pin,no,Zone 1
+Parkland,,1054,2552,Grand Hall Ballroom,,na,na,vendor_pin,no,Zone 1
+Pathways Texas,,1764,985,Grand Allee Du Meadows,,na,na,vendor_pin,no,Zone 2
+Possums & Apples,,1054,2552,Grand Hall Ballroom Terrace ,,na,na,vendor_pin,no,Zone 3
+Pretty & Polished Bracelets,,1054,2552,Grand Hall Ballroom Terrace ,,na,na,vendor_pin,no,Zone 3
+Registration/Check In ,,2069,2667,Main Entrance ,,na,na,location_pin,yes,Zone 1
+RoboPlayers ,,1708,764,Grand Allee Du Meadows,,na,na,vendor_pin,no,Zone 4
+Simply Bonded,,1447,1111,Grand Allee Du Meadows,,na,na,vendor_pin,no,Zone 2
+Tesla,,1054,2552,Grand Hall Ballroom,,na,na,vendor_pin,no,Zone 1
+TJ Hunter Engineering ,,1054,2552,Grand Hall Ballroom,,na,na,vendor_pin,no,Zone 1
+Tools of Kismet,,1054,2552,Grand Hall Ballroom Terrace ,,na,na,vendor_pin,no,Zone 3
+UTA EEC Drones,,1054,2552,Grand Allee Du Meadows,,na,na,location_pin,no,Zone 1
+UTD - Ofen Lab ,,1054,2552,Grand Hall Ballroom,,na,na,vendor_pin,no,Zone 1
+UTD - Social Communication Lab,,1054,2552,Grand Hall Ballroom,,na,na,vendor_pin,no,Zone 1
+VR Meditation ,,1054,2552,Canopy Conference Room ,,na,na,location_pin,no,Zone 1
+water,,1054,2552,Grand Hall Ballroom,,na,na,water_pin,no,Zone 1
+Yangua Wellness,,1054,2552,Grand Allee Du Meadows,,na,na,vendor_pin,no,Zone 1
+Victory Gardens ,,0,0,,,,,,,Zone 3
+VR Meditation,,1054,2552,,,,,,,Zone 1
+Uplift Education,,1054,2552,,,,,,,Zone 1
+,,,,,,,,,,Zone 1
