@@ -1,6 +1,6 @@
 /* ==========================================================
    STEAM FESTIVAL PASSPORT
-   BINGO v2.1 — TWO 5×5 GRIDS
+   BINGO v2.0
 ========================================================== */
 
 const COOKIE_NAME = "stemFestivalBingo";
@@ -9,12 +9,9 @@ const ICON_FOLDER = "assets/icons/";
 
 const board = document.getElementById("bingo");
 
-const board2 = document.getElementById("bingo2");
-
 let bingoData = [];
 
 let completed = {};
-
 
 /* ==========================================================
    COOKIE FUNCTIONS
@@ -30,8 +27,8 @@ function setCookie(name, value, days = 365) {
 
     document.cookie =
         `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/`;
-}
 
+}
 
 function getCookie(name) {
 
@@ -52,8 +49,8 @@ function getCookie(name) {
     }
 
     return null;
-}
 
+}
 
 /* ==========================================================
    SAVE / LOAD PROGRESS
@@ -85,7 +82,6 @@ function loadProgress() {
 
 }
 
-
 function saveProgress() {
 
     setCookie(
@@ -98,7 +94,6 @@ function saveProgress() {
 
 }
 
-
 /* ==========================================================
    RANDOM HELPERS
 ========================================================== */
@@ -109,13 +104,11 @@ function randomRotation() {
 
 }
 
-
 function randomScale() {
 
     return 0.95 + Math.random() * 0.10;
 
 }
-
 
 /* ==========================================================
    PASSPORT SHAKE
@@ -123,26 +116,13 @@ function randomScale() {
 
 function shakePassport() {
 
-    /*
-        Shake the passport container if available.
+    board.classList.remove("passport-hit");
 
-        Otherwise fall back to the original bingo board.
-    */
+    void board.offsetWidth;
 
-    const passport =
-        document.querySelector(".passport-container");
-
-    const target =
-        passport || board;
-
-    target.classList.remove("passport-hit");
-
-    void target.offsetWidth;
-
-    target.classList.add("passport-hit");
+    board.classList.add("passport-hit");
 
 }
-
 
 /* ==========================================================
    PLAY STAMP ANIMATION
@@ -178,7 +158,6 @@ function playStampAnimation(img) {
 
 }
 
-
 /* ==========================================================
    MARK A SQUARE COMPLETE
 ========================================================== */
@@ -203,7 +182,6 @@ function completeSquare(square, div, img, text) {
 
 }
 
-
 /* ==========================================================
    LOAD CSV
 ========================================================== */
@@ -214,9 +192,7 @@ async function loadCSV() {
 
         console.log("Loading CSV...");
 
-        const response =
-            await fetch("bingo.csv");
-
+        const response = await fetch("bingo.csv");
 
         if (!response.ok) {
 
@@ -228,48 +204,33 @@ async function loadCSV() {
 
         }
 
+        const text = await response.text();
 
-        const text =
-            await response.text();
-
-
-        const rows =
-            text.trim().split(/\r?\n/);
-
+        const rows = text.trim().split(/\r?\n/);
 
         rows.shift();
 
-
         bingoData = rows.map(row => {
 
-            const cols =
-                row.split(",");
-
+            const cols = row.split(",");
 
             return {
 
-                id:
-                    cols[0].trim(),
+                id: cols[0].trim(),
 
-                task:
-                    cols[1].trim(),
+                task: cols[1].trim(),
 
-                passcode:
-                    cols[2].trim(),
+                passcode: cols[2].trim(),
 
-                png:
-                    cols[3]?.trim() || "",
+                png: cols[3]?.trim() || "",
 
-                description:
-                    cols[4]?.trim() || "",
+                description: cols[4]?.trim() || "",
 
-                link:
-                    cols[5]?.trim() || ""
+                link: cols[5]?.trim() || ""
 
             };
 
         });
-
 
         console.log(
 
@@ -281,11 +242,9 @@ async function loadCSV() {
 
         );
 
-
         buildBoard();
 
     }
-
 
     catch(error){
 
@@ -300,351 +259,259 @@ async function loadCSV() {
     }
 
 }
-
-
 /* ==========================================================
    BUILD BINGO BOARD
 ========================================================== */
 
 function buildBoard() {
 
-    console.log("Building bingo boards...");
-
-
-    /* ------------------------------------------------------
-       Clear both boards
-    ------------------------------------------------------ */
+    console.log("Building bingo board...");
 
     board.innerHTML = "";
 
-    if (board2) {
 
-        board2.innerHTML = "";
-
-    }
+    bingoData.forEach(square => {
 
 
-    /* ------------------------------------------------------
-       Split activities into groups of 25
-    ------------------------------------------------------ */
+        const div = document.createElement("div");
 
-    const firstBoard =
-        bingoData.slice(0, 25);
+        div.className = "square";
 
 
-    const secondBoard =
-        bingoData.slice(25, 50);
+        /* ==================================================
+           CREATE STAMP IMAGE
+        ================================================== */
 
 
-    console.log(
+        const img = document.createElement("img");
 
-        "Board 1:",
+        img.className = "square-icon";
 
-        firstBoard.length,
-
-        "activities."
-
-    );
+        img.alt = square.task;
 
 
-    console.log(
+        if (square.png) {
 
-        "Board 2:",
+            img.src = ICON_FOLDER + square.png + ".png";
 
-        secondBoard.length,
-
-        "activities."
-
-    );
+        }
 
 
-    /* ------------------------------------------------------
-       Build first 5×5 board
-    ------------------------------------------------------ */
+        /*
+            Hide stamp until unlocked.
+            Opacity is used instead of display:none
+            so the image is already loaded.
+        */
 
-    firstBoard.forEach(square => {
+        img.style.opacity = "0";
 
-        createSquare(
-
-            square,
-
-            board
-
-        );
-
-    });
+        img.style.display = "block";
 
 
-    /* ------------------------------------------------------
-       Build second 5×5 board
-    ------------------------------------------------------ */
+        div.appendChild(img);
 
-    if (board2) {
 
-        secondBoard.forEach(square => {
 
-            createSquare(
+        /* ==================================================
+           CREATE ACTIVITY TEXT
+        ================================================== */
 
-                square,
 
-                board2
+        const text = document.createElement("div");
+
+        text.className = "square-text";
+
+        text.textContent = square.task;
+
+
+        div.appendChild(text);
+
+
+
+        /* ==================================================
+           RESTORE SAVED PROGRESS
+        ================================================== */
+
+
+        if (completed[square.id]) {
+
+
+            div.classList.add("marked");
+
+
+            text.style.display = "none";
+
+
+            img.style.opacity = "1";
+
+
+            img.style.setProperty(
+
+                "--stamp-rotation",
+
+                randomRotation() + "deg"
 
             );
 
-        });
 
-    }
+            img.style.setProperty(
 
-}
+                "--stamp-scale",
 
+                randomScale()
 
-/* ==========================================================
-   CREATE INDIVIDUAL SQUARE
-========================================================== */
+            );
 
-function createSquare(square, targetBoard) {
+        }
 
-    const div =
-        document.createElement("div");
 
 
-    div.className =
-        "square";
+        /* ==================================================
+           CLICK EVENT
+        ================================================== */
 
 
-    /* ======================================================
-       CREATE STAMP IMAGE
-    ====================================================== */
+        div.addEventListener(
 
-    const img =
-        document.createElement("img");
+            "click",
 
+            () => {
 
-    img.className =
-        "square-icon";
 
+                /*
+                    Prevent duplicate stamping
+                */
 
-    img.alt =
-        square.task;
+                if (completed[square.id]) {
 
+                    return;
 
-    if (square.png) {
+                }
 
-        img.src =
-            ICON_FOLDER +
-            square.png +
-            ".png";
 
-    }
 
+                /*
+                    FREE SPACE
+                */
 
-    /*
-        Hide stamp until unlocked.
-        Opacity is used instead of display:none
-        so the image is already loaded.
-    */
+                if (
 
-    img.style.opacity =
-        "0";
+                    square.passcode.toUpperCase()
 
-    img.style.display =
-        "block";
+                    ===
 
+                    "FREE"
 
-    div.appendChild(img);
+                ) {
 
 
-    /* ======================================================
-       CREATE ACTIVITY TEXT
-    ====================================================== */
+                    completeSquare(
 
-    const text =
-        document.createElement("div");
+                        square,
 
+                        div,
 
-    text.className =
-        "square-text";
+                        img,
 
+                        text
 
-    text.textContent =
-        square.task;
+                    );
 
 
-    div.appendChild(text);
+                    return;
 
+                }
 
-    /* ======================================================
-       RESTORE SAVED PROGRESS
-    ====================================================== */
 
-    if (completed[square.id]) {
 
-        div.classList.add("marked");
+                /*
+                    ASK FOR PASSCODE
+                */
 
-        text.style.display =
-            "none";
-
-        img.style.opacity =
-            "1";
-
-
-        img.style.setProperty(
-
-            "--stamp-rotation",
-
-            randomRotation() + "deg"
-
-        );
-
-
-        img.style.setProperty(
-
-            "--stamp-scale",
-
-            randomScale()
-
-        );
-
-    }
-
-
-    /* ======================================================
-       CLICK EVENT
-    ====================================================== */
-
-    div.addEventListener(
-
-        "click",
-
-        () => {
-
-
-            /*
-                Prevent duplicate stamping
-            */
-
-            if (completed[square.id]) {
-
-                return;
-
-            }
-
-
-            /*
-                FREE SPACE
-            */
-
-            if (
-
-                square.passcode.toUpperCase()
-
-                ===
-
-                "FREE"
-
-            ) {
-
-                completeSquare(
-
-                    square,
-
-                    div,
-
-                    img,
-
-                    text
-
-                );
-
-                return;
-
-            }
-
-
-            /*
-                ASK FOR PASSCODE
-            */
-
-            const code =
-                prompt(
+                const code = prompt(
 
                     "Enter the 4-digit booth passcode:"
 
                 );
 
 
-            if (code === null) {
 
-                return;
+                if (code === null) {
+
+                    return;
+
+                }
+
+
+
+                /*
+                    VALIDATE ANSWER
+                */
+
+                if (
+
+                    code.trim()
+
+                    ===
+
+                    square.passcode.trim()
+
+                ) {
+
+
+                    completeSquare(
+
+                        square,
+
+                        div,
+
+                        img,
+
+                        text
+
+                    );
+
+
+                }
+
+                else {
+
+
+                    alert(
+
+                        "Incorrect passcode."
+
+                    );
+
+
+                }
+
 
             }
 
-
-            /*
-                VALIDATE ANSWER
-            */
-
-            if (
-
-                code.trim()
-
-                ===
-
-                square.passcode.trim()
-
-            ) {
-
-                completeSquare(
-
-                    square,
-
-                    div,
-
-                    img,
-
-                    text
-
-                );
-
-            }
+        );
 
 
-            else {
 
-                alert(
-
-                    "Incorrect passcode."
-
-                );
-
-            }
-
-        }
-
-    );
+        board.appendChild(div);
 
 
-    /* ======================================================
-       ADD SQUARE TO THE CORRECT BOARD
-    ====================================================== */
+    });
 
-    targetBoard.appendChild(div);
 
 }
-
-
 /* ==========================================================
    RESET CARD
 ========================================================== */
 
 function resetCard() {
 
-    const confirmReset =
-        confirm(
 
-            "Reset your bingo passport?"
+    const confirmReset = confirm(
 
-        );
+        "Reset your bingo passport?"
+
+    );
 
 
     if (!confirmReset) {
@@ -662,13 +529,17 @@ function resetCard() {
 
     buildBoard();
 
+
 }
+
 
 
 /* ==========================================================
    START APPLICATION
 ========================================================== */
 
+
 loadProgress();
+
 
 loadCSV();
